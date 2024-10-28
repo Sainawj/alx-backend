@@ -4,11 +4,13 @@
 import csv
 from typing import List, Tuple
 
+
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """Calculates the start and end indices based on page and page size."""
     start = (page - 1) * page_size
     end = start + page_size
     return (start, end)
+
 
 class Server:
     """Server class to handle pagination for a baby names database."""
