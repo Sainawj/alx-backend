@@ -19,13 +19,17 @@ class LRUCache(BaseCaching):
     def put(self, key, item):
         """
         Adds a key-value pair to the cache following LRU rules.
-        If the cache exceeds MAX_ITEMS, the least recently used item is removed.
+        If the cache exceeds MAX_ITEMS, the least recently used
+        item is removed.
         Args:
             key: the key to store.
             item: the item associated with the key.
         """
         if key is not None and item is not None:
-            if len(self.cache_data) >= BaseCaching.MAX_ITEMS and key not in self.cache_data:
+            if (
+                len(self.cache_data) >= BaseCaching.MAX_ITEMS
+                and key not in self.cache_data
+            ):
                 print("DISCARD: {}".format(self.usage[0]))
                 del self.cache_data[self.usage.pop(0)]
             if key in self.usage:
@@ -43,3 +47,4 @@ class LRUCache(BaseCaching):
             self.usage.append(key)
             return self.cache_data[key]
         return None
+

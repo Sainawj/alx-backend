@@ -25,7 +25,10 @@ class MRUCache(BaseCaching):
             item: the item associated with the key.
         """
         if key is not None and item is not None:
-            if len(self.cache_data) >= BaseCaching.MAX_ITEMS and key not in self.cache_data:
+            if (
+                len(self.cache_data) >= BaseCaching.MAX_ITEMS
+                and key not in self.cache_data
+            ):
                 print("DISCARD: {}".format(self.usage[-1]))
                 del self.cache_data[self.usage.pop(-1)]
             if key in self.usage:
